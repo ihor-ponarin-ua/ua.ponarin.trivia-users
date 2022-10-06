@@ -21,9 +21,17 @@ public class User {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "nick_name", nullable = false, unique = true, updatable = false)
+    @Column(nullable = false, unique = true, updatable = false)
     @Pattern(regexp = "[\\p{Alnum}-_]+", message = "Only alphanumeric, '-', '_' symbols are allowed")
-    private String nickName;
+    private String login;
+
+    @Column(nullable = false)
+    @NotBlank
+    private String password;
+
+    @Column(nullable = false)
+    @NotBlank
+    private String role;
 
     @Column(name = "first_name", nullable = false)
     @Pattern(regexp = "\\p{Alpha}+", message = "Only alphabetic symbols are allowed")
@@ -32,10 +40,6 @@ public class User {
     @Column(name = "last_name", nullable = false)
     @Pattern(regexp = "\\p{Alpha}+", message = "Only alphabetic symbols are allowed")
     private String lastName;
-
-    @Column(nullable = false)
-    @NotBlank
-    private String password;
 
     @Column(name = "created_on")
     @CreationTimestamp
