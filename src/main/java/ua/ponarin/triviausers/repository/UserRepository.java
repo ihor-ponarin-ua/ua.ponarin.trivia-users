@@ -6,4 +6,5 @@ import ua.ponarin.triviausers.dto.User;
 
 @RepositoryRestResource
 public interface UserRepository extends JpaRepository<User, Long> {
+    User findUserByLoginAndPassword(String login, String password);
 }
